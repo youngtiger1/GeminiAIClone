@@ -7,7 +7,7 @@ import {
 
 // Define Gemini API URL and API key
 const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent";
-const API_KEY = "AIzaSyDyruRnKA92b58NESc7tpSaw3tFh6ULY5Y"; // Replace with your actual Gemini API key
+const API_KEY = "YOUR_GEMINI_API_KEY"; // Replace with your actual Gemini API key
 
 // Function to analyze the prompt using the Gemini API
 async function analyzePrompt(prompt) {
