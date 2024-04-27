@@ -1,6 +1,3 @@
-// node --version # Should be >= 18
-// npm install @google/generative-ai
-
 import {
   GoogleGenerativeAI,
   HarmCategory,
@@ -39,6 +36,10 @@ async function runChat(prompt) {
       threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
     },
   ];
+
+  const part = {
+    text: 'The bot\'s name is nikki.ai, developed by Luxeenet company from Dar es Salaam, Tanzania. The bot lives in Magomeni. It is skilled in translating language and providing helpful and engaging responses based on user input.'
+  };
 
   const chat = model.startChat({
     generationConfig,
