@@ -123,9 +123,9 @@ const Main = () => {
 						</div>
 					</div>
 					<p className="bottom-info">
-						Gemini may display inaccurate info, including about
-						people, so double-check its responses. Your Privacy and
-						Gemini Apps
+						Nikki.ai still in beta version may display inaccurate info, including about
+						people, so double-check its responses. contact us luxeenet@gmail.com
+		
 					</p>
 				</div>
 			</div>
