@@ -23,7 +23,7 @@ const Main = () => {
 	return (
 		<div className="main">
 			<div className="nav">
-				<div className="social">
+				<!-- <div className="social">
 					<a
 						href="https://github.com/StarKnightt/GeminiAIClone"
 						target="_blank"
@@ -35,8 +35,8 @@ const Main = () => {
 							style={{ width: "24px", height: "24px" }}
 						/>
 					</a>
-				</div>
-				<p>Gemini</p>
+				</div> -->
+				<p>Nikki.ai</p>
 				<img src={assets.user_icon} alt="" />
 			</div>
 			<div className="main-container">
@@ -44,7 +44,7 @@ const Main = () => {
 					<>
 						<div className="greet">
 							<p>
-								<span>Hello, Developer.</span>
+								<span>Hello, im nikki.ai model .</span>
 							</p>
 							<p>How can I help you today?</p>
 						</div>
@@ -52,7 +52,7 @@ const Main = () => {
 						<div className="cards">
 							<div className="card">
 								<p>
-									Is HTML a programming Language,Explain it!
+									Is nikki.ai developed by luxeenet platform?!
 								</p>
 								<img src={assets.compass_icon} alt="" />
 							</div>
