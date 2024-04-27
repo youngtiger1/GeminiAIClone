@@ -23,7 +23,7 @@ const Main = () => {
 	return (
 		<div className="main">
 			<div className="nav">
-				<!-- <div className="social">
+				{/*  <div className="social">
 					<a
 						href="https://github.com/StarKnightt/GeminiAIClone"
 						target="_blank"
@@ -35,7 +35,7 @@ const Main = () => {
 							style={{ width: "24px", height: "24px" }}
 						/>
 					</a>
-				</div> -->
+				</div> */}
 				<p>Nikki.ai</p>
 				<img src={assets.user_icon} alt="" />
 			</div>
