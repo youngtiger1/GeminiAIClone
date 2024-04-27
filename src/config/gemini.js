@@ -37,20 +37,24 @@ async function runChat(prompt) {
     },
   ];
 
-  const part = {
-    text: 'The bot\'s name is nikki.ai, developed by Luxeenet company from Dar es Salaam, Tanzania. The bot lives in Magomeni. It is skilled in translating language and providing helpful and engaging responses based on user input.'
-  };
+  // Constant part for the bot's name response
+  const botNameResponse =
+    "My name is nikki.ai, developed by Luxeenet company from Dar es Salaam, Tanzania.";
 
-  const chat = model.startChat({
+  // Define the parts array with the constant response
+  const parts = [{ text: botNameResponse }];
+
+  // Start the chat with the constant response parts
+  const result = await model.generateContent({
+    contents: [{ role: "user", parts }],
     generationConfig,
     safetySettings,
-    history: [],
   });
 
-  const result = await chat.sendMessage(prompt);
-  const response = result.response;
+  const response = result.responses[0];
   console.log(response.text());
   return response.text();
 }
 
 export default runChat;
+
