@@ -92,7 +92,7 @@ const Main = () => {
 					<div className="search-box">
 						<input
 							onChange={(e) => setInput(e.target.value)}
-							value={enhancedInput} {/* Use enhancedInput here */}
+							value={enhancedInput} {/* Use curly braces here */}
 							type="text"
 							placeholder="Enter a prompt here"
 							onKeyDown={handleKeyDown}
