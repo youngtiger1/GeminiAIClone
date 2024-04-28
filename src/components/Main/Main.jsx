@@ -32,6 +32,16 @@ const Main = () => {
     }
   };
 
+  const handleSendClick = () => {
+    const finalInput = input.toLowerCase().includes("bot's name") ||
+      input.toLowerCase().includes("your name")
+      ? `When user asks about your name or bot's name, your name should be nikki.ai developed by Luxeenet platform from Magomeni, Dar es Salaam, Tanzania. ${userInput}`
+      : userInput;
+    setInput(finalInput);
+    onSent();
+    setUserInput(""); // Clear the input field after sending the message
+  };
+
   return (
     <div className="main">
       <div className="nav">
@@ -89,7 +99,7 @@ const Main = () => {
               <img src={assets.mic_icon} alt="" />
               {userInput ? (
                 <img
-                  onClick={handleKeyDown}
+                  onClick={handleSendClick}
                   src={assets.send_icon}
                   alt=""
                 />
