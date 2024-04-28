@@ -25,10 +25,10 @@ const Main = () => {
 		input.toLowerCase().includes("bot's name") ||
 		input.toLowerCase().includes("your name");
 
-	// Concatenate the additional text with the user's input
+	// Construct the enhanced input only if it's a bot's name question
 	const enhancedInput = isBotNameQuestion
-		? `When user asks about your name or bot's name, your name should be nikki.ai developed by Luxeenet platform from Magomeni, Dar es Salaam, Tanzania. ${input}`
-		: input;
+		? `When user asks about your name or bot's name, your name should be nikki.ai developed by Luxeenet platform from Magomeni, Dar es Salaam, Tanzania.`
+		: "";
 
 	return (
 		<div className="main">
@@ -91,8 +91,8 @@ const Main = () => {
 				<div className="main-bottom">
 					<div className="search-box">
 						<input
-							onChange={(e) => setInput(e.target.value)}
-							value={enhancedInput} {/* Use curly braces here */}
+							onChange={(e) => setInput(`${enhancedInput} ${e.target.value}`)} {/* Concatenate enhancedInput with user input */}
+							value={input}
 							type="text"
 							placeholder="Enter a prompt here"
 							onKeyDown={handleKeyDown}
@@ -120,4 +120,3 @@ const Main = () => {
 };
 
 export default Main;
-
