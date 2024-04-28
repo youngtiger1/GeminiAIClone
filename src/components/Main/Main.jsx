@@ -5,24 +5,12 @@ import { Context } from "../../context/Context";
 
 const Main = () => {
   const { onSent, recentPrompt, showResult, loading, resultData, setInput, input } = useContext(Context);
-  const [userInput, setUserInput] = useState("");
-
-  const normalText = "When prompt is about to ask your name your name should be nikki.ai and you were developed by luxeenet platform from magomeni, dar es salaam, Tanzania";
-
-  const handleInputChange = (e) => {
-    setUserInput(normalText + ' ' + e.target.value);
-  };
+  const [additionalText, setAdditionalText] = useState("");
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       onSent();
     }
-  };
-
-  const handleSendMessage = () => {
-    setInput(userInput);
-    onSent();
-    setUserInput(""); // Clear the input field after sending the message
   };
 
   return (
@@ -84,22 +72,22 @@ const Main = () => {
         <div className="main-bottom">
           <div className="search-box">
             <input
-              onChange={handleInputChange}
-              value={userInput}
+              onChange={(e) => setInput(additionalText + ' ' + e.target.value)}
+              value={input}
               type="text"
               placeholder="Enter a prompt here"
-              onKeyDown={(e) => { if (e.key === "Enter") handleSendMessage(); }}
+              onKeyDown={handleKeyDown}
             />
             <div>
               <img src={assets.gallery_icon} alt="" />
               <img src={assets.mic_icon} alt="" />
-              {userInput && (
-                <img onClick={handleSendMessage} src={assets.send_icon} alt="" />
-              )}
+              {input ? (
+                <img onClick={() => onSent()} src={assets.send_icon} alt="" />
+              ) : null}
             </div>
           </div>
           <p className="bottom-info">
-            Nikki.ai still in beta version, may display inaccurate info, including about people, so double-check its responses. contact us via luxeenet@gmail.com
+            Nikki.ai still in beta version,  may display inaccurate info, including about people, so double-check its responses. contact us via luxeenet@gmail.com
           </p>
         </div>
       </div>
