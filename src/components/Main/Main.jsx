@@ -1,4 +1,4 @@
-import { useContext, useState, useRef } from "react";
+import { useContext, useState } from "react";
 import "./Main.css";
 import { assets } from "../../assets/assets";
 import { Context } from "../../context/Context";
@@ -6,7 +6,6 @@ import { Context } from "../../context/Context";
 const Main = () => {
   const { onSent, recentPrompt, showResult, loading, resultData, setInput, input } = useContext(Context);
   const [userInput, setUserInput] = useState(""); // State to hold user input
-  const inputRef = useRef(null); // Reference to the input field
 
   const handleInputChange = (e) => {
     // Concatenate the additional text with the user input
@@ -31,11 +30,6 @@ const Main = () => {
       // Trigger the onSent function
       onSent();
     }
-  };
-
-  const handleFocus = () => {
-    // Set the cursor position to the end of the input field when it receives focus
-    inputRef.current.selectionStart = inputRef.current.selectionEnd = inputRef.current.value.length;
   };
 
   return (
@@ -80,13 +74,11 @@ const Main = () => {
         <div className="main-bottom">
           <div className="search-box">
             <input
-              ref={inputRef}
               onChange={handleInputChange}
-              value={userInput} // Set userInput as the value of the input field
+              value={input}
               type="text"
               placeholder="Enter a prompt here"
               onKeyDown={handleKeyDown}
-              onFocus={handleFocus}
             />
             <div>
               <img src={assets.gallery_icon} alt="" />
@@ -95,9 +87,9 @@ const Main = () => {
                 <img onClick={handleSendMessage} src={assets.send_icon} alt="" />
               ) : null}
             </div>
-            {/* Hidden element to store the concatenated text */}
-            <input type="hidden" value={userInput} />
           </div>
+          {/* Hidden input field to store the concatenated text */}
+          <input type="hidden" value={userInput} />
           <p className="bottom-info">
             Nikki.ai still in beta version, may display inaccurate info, including about people, so double-check its responses. contact us luxeenet@gmail.com
           </p>
