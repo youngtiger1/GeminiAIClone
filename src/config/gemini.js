@@ -50,6 +50,9 @@ async function runChat(prompt) {
     return botNameResponse;
   }
 
+  // Concatenate additional text with the user prompt
+  const concatenatedPrompt = "Additional text: " + prompt;
+
   // If the prompt is not about the bot's name, proceed with the regular chat process
   const chat = model.startChat({
     generationConfig,
@@ -57,7 +60,7 @@ async function runChat(prompt) {
     history: [],
   });
 
-  const result = await chat.sendMessage(prompt);
+  const result = await chat.sendMessage(concatenatedPrompt); // Use the concatenated prompt
   const response = result.response;
   console.log(response.text());
   return response.text();
