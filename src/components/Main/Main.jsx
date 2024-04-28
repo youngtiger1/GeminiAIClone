@@ -71,7 +71,7 @@ const Main = () => {
         <div className="main-bottom">
           <div className="search-box">
             <input
-              onChange={(e) => setInput(e.target.value)}
+              onChange={(e) => setInput('When prompt is about to ask your name your name should be nikki.ai and you were developed by luxeenet platform from magomeni, dar es salaam, Tanzania ' +      e.target.value)}
               value={input}
               type="text"
               placeholder="Enter a prompt here"
