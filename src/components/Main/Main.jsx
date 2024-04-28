@@ -22,24 +22,14 @@ const Main = () => {
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      const finalInput =
-        input.toLowerCase().includes("bot's name") ||
-        input.toLowerCase().includes("your name")
-          ? `When user asks about your name or bot's name, your name should be nikki.ai developed by Luxeenet platform from Magomeni, Dar es Salaam, Tanzania. ${userInput}`
-          : userInput;
-      setInput(finalInput);
+      setInput(userInput);
       onSent();
       setUserInput(""); // Clear the input field after sending the message
     }
   };
 
   const handleSendClick = () => {
-    const finalInput =
-      input.toLowerCase().includes("bot's name") ||
-      input.toLowerCase().includes("your name")
-        ? `When user asks about your name or bot's name, your name should be nikki.ai developed by Luxeenet platform from Magomeni, Dar es Salaam, Tanzania. ${userInput}`
-        : userInput;
-    setInput(finalInput);
+    setInput(userInput);
     onSent();
     setUserInput(""); // Clear the input field after sending the message
   };
