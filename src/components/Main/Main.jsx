@@ -4,23 +4,18 @@ import { assets } from "../../assets/assets";
 import { Context } from "../../context/Context";
 
 const Main = () => {
-  const { onSent, recentPrompt, showResult, loading, resultData, setInput } = useContext(Context);
-  const [userInput, setUserInput] = useState("");
+  const { onSent, recentPrompt, showResult, loading, resultData, setInput, input } = useContext(Context);
 
-  const handleInputChange = (e) => {
-    setUserInput(e.target.value);
-  };
-
-  const handleSendMessage = () => {
-    setInput(userInput);
-    onSent();
-    setUserInput(""); // Clear the input field after sending the message
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      onSent();
+    }
   };
 
   return (
     <div className="main">
       <div className="nav">
-        <p>Nikki.ai</p>
+        <p>Gemini</p>
         <img src={assets.user_icon} alt="" />
       </div>
       <div className="main-container">
@@ -28,12 +23,29 @@ const Main = () => {
           <>
             <div className="greet">
               <p>
-                <span>Hello, I'm Nikki.ai model.</span>
+                <span>Hello, Developer.</span>
               </p>
               <p>How can I help you today?</p>
             </div>
 
-            <div className="cards">{/* Card components */}</div>
+            <div className="cards">
+              <div className="card">
+                <p>Is HTML a programming Language,Explain it!</p>
+                <img src={assets.compass_icon} alt="" />
+              </div>
+              <div className="card">
+                <p>What are some necessary skills to improve yourself?</p>
+                <img src={assets.bulb_icon} alt="" />
+              </div>
+              <div className="card">
+                <p>Brainstorm team bonding activities for our work retreat</p>
+                <img src={assets.message_icon} alt="" />
+              </div>
+              <div className="card">
+                <p>Add some comments to the following code</p>
+                <img src={assets.code_icon} alt="" />
+              </div>
+            </div>
           </>
         ) : (
           <div className="result">
@@ -59,22 +71,22 @@ const Main = () => {
         <div className="main-bottom">
           <div className="search-box">
             <input
-              onChange={handleInputChange}
-              value={userInput}
+              onChange={(e) => setInput(e.target.value)}
+              value={input}
               type="text"
               placeholder="Enter a prompt here"
-              onKeyDown={(e) => { if (e.key === "Enter") handleSendMessage(); }}
+              onKeyDown={handleKeyDown}
             />
             <div>
               <img src={assets.gallery_icon} alt="" />
               <img src={assets.mic_icon} alt="" />
-              {userInput && (
-                <img onClick={handleSendMessage} src={assets.send_icon} alt="" />
-              )}
+              {input ? (
+                <img onClick={() => onSent()} src={assets.send_icon} alt="" />
+              ) : null}
             </div>
           </div>
           <p className="bottom-info">
-            Nikki.ai still in beta version may display inaccurate info, including about people, so double-check its responses. contact us luxeenet@gmail.com
+            Gemini may display inaccurate info, including about people, so double-check its responses. Your Privacy and Gemini Apps
           </p>
         </div>
       </div>
@@ -83,4 +95,3 @@ const Main = () => {
 };
 
 export default Main;
-
