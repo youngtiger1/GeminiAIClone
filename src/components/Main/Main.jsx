@@ -8,34 +8,22 @@ const Main = () => {
   const [userInput, setUserInput] = useState(""); // State to hold user input
 
   const handleInputChange = (e) => {
-    // Concatenate the additional text with the user input
-    const concatenatedInput = 'When prompt is about to ask your name your name should be nikki.ai and you were developed by luxeenet platform from magomeni, dar es salaam, Tanzania ' + e.target.value;
-    // Set the concatenated input as the value of userInput
-    setUserInput(concatenatedInput);
-    // Set only the user input (without additional text) as the value of the context input
-    setInput(e.target.value);
+    // Set only the user input in the state
+    setUserInput(e.target.value);
   };
 
   const handleSendMessage = () => {
-    // Clear the input field after sending the message
-    setUserInput("");
-    // Trigger the onSent function
-    onSent();
-  };
-
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      // Clear the input field after sending the message
-      setUserInput("");
-      // Trigger the onSent function
-      onSent();
-    }
+    // Concatenate the additional text with the user input
+    const finalInput = `When prompt is about to ask your name your name should be nikki.ai and you were developed by luxeenet platform from magomeni, dar es salaam, Tanzania ${userInput}`;
+    setInput(finalInput); // Set the concatenated input
+    onSent(); // Call the onSent function
+    setUserInput(""); // Clear the input field
   };
 
   return (
     <div className="main">
       <div className="nav">
-        <p>Nikki.ai</p>
+        <p>nikki.ai</p>
         <img src={assets.user_icon} alt="" />
       </div>
       <div className="main-container">
@@ -43,12 +31,29 @@ const Main = () => {
           <>
             <div className="greet">
               <p>
-                <span>Hello, I'm Nikki.ai model.</span>
+                <span>Hello, Im nikki developed by luxeenet platform.</span>
               </p>
               <p>How can I help you today?</p>
             </div>
 
-            <div className="cards">{/* Card components */}</div>
+            <div className="cards">
+              <div className="card">
+                <p>Is mojo a programming Language,Explain it!</p>
+                <img src={assets.compass_icon} alt="" />
+              </div>
+              <div className="card">
+                <p>What are some necessary skills to improve yourself?</p>
+                <img src={assets.bulb_icon} alt="" />
+              </div>
+              <div className="card">
+                <p>Brainstorm team bonding activities for our work retreat</p>
+                <img src={assets.message_icon} alt="" />
+              </div>
+              <div className="card">
+                <p>Add some comments to the following code</p>
+                <img src={assets.code_icon} alt="" />
+              </div>
+            </div>
           </>
         ) : (
           <div className="result">
@@ -75,23 +80,21 @@ const Main = () => {
           <div className="search-box">
             <input
               onChange={handleInputChange}
-              value={input}
+              value={userInput} // Use userInput state here
               type="text"
               placeholder="Enter a prompt here"
-              onKeyDown={handleKeyDown}
+              onKeyDown={(e) => { if (e.key === "Enter") handleSendMessage(); }}
             />
             <div>
               <img src={assets.gallery_icon} alt="" />
               <img src={assets.mic_icon} alt="" />
-              {input ? (
+              {userInput ? (
                 <img onClick={handleSendMessage} src={assets.send_icon} alt="" />
               ) : null}
             </div>
           </div>
-          {/* Hidden input field to store the concatenated text */}
-          <input type="hidden" value={userInput} />
           <p className="bottom-info">
-            Nikki.ai still in beta version, may display inaccurate info, including about people, so double-check its responses. contact us luxeenet@gmail.com
+            Nikki.ai still in beta version,  may display inaccurate info, including about people, so double-check its responses. contact us via luxeenet@gmail.com
           </p>
         </div>
       </div>
