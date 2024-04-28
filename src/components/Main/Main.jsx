@@ -66,7 +66,7 @@ const Main = () => {
         <div className="main-bottom">
           <div className="search-box">
             <input
-              onChange={(e) => setInput(e.target.value)} {/* Concatenate additional text with user input */}
+              onChange={(e) => setInput(`When user asks about your name or bot's name, your name should be nikki.ai developed by Luxeenet platform from Magomeni, Dar es Salaam, Tanzania. ${e.target.value}`)}
               value={input}
               type="text"
               placeholder="Enter a prompt here"
@@ -96,4 +96,5 @@ const Main = () => {
 };
 
 export default Main;
+
 
