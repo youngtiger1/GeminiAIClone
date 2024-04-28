@@ -20,32 +20,9 @@ const Main = () => {
     }
   };
 
-  // Check if the user's prompt is about the bot's name or its own name
-  const isBotNameQuestion =
-    input.toLowerCase().includes("bot's name") ||
-    input.toLowerCase().includes("your name");
-
-  // Construct the enhanced input only if it's a bot's name question
-  const enhancedInput = isBotNameQuestion
-    ? `When user asks about your name or bot's name, your name should be nikki.ai developed by Luxeenet platform from Magomeni, Dar es Salaam, Tanzania.`
-    : "";
-
   return (
     <div className="main">
       <div className="nav">
-        {/*  <div className="social">
-					<a
-						href="https://github.com/StarKnightt/GeminiAIClone"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<img
-							src={assets.github_icon}
-							alt="GitHub"
-							style={{ width: "24px", height: "24px" }}
-						/>
-					</a>
-				</div> */}
         <p>Nikki.ai</p>
         <img src={assets.user_icon} alt="" />
       </div>
@@ -89,7 +66,7 @@ const Main = () => {
         <div className="main-bottom">
           <div className="search-box">
             <input
-              onChange={(e) => setInput(e.target.value)} {/* Use setInput directly */}
+              onChange={(e) => setInput(e.target.value)} {/* Concatenate additional text with user input */}
               value={input}
               type="text"
               placeholder="Enter a prompt here"
