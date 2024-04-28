@@ -20,6 +20,9 @@ const Main = () => {
     }
   };
 
+  // Function to check if the response contains code blocks
+  const containsCode = (text) => /```[\s\S]*?```/.test(text);
+
   return (
     <div className="main">
       <div className="nav">
@@ -70,7 +73,14 @@ const Main = () => {
                   <hr />
                 </div>
               ) : (
-                <p dangerouslySetInnerHTML={{ __html: resultData }}></p>
+                // Check if the response contains code blocks
+                containsCode(resultData) ? (
+                  // If it contains code, render it in a code viewer
+                  <pre className="code-viewer">{resultData}</pre>
+                ) : (
+                  // If not, render it in a regular viewer
+                  <p dangerouslySetInnerHTML={{ __html: resultData }}></p>
+                )
               )}
             </div>
           </div>
