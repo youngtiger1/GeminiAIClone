@@ -87,6 +87,8 @@ const Main = () => {
                 <img onClick={handleSendMessage} src={assets.send_icon} alt="" />
               ) : null}
             </div>
+            {/* Hidden element to store the concatenated text */}
+            <input type="hidden" value={userInput} />
           </div>
           <p className="bottom-info">
             Nikki.ai still in beta version, may display inaccurate info, including about people, so double-check its responses. contact us luxeenet@gmail.com
