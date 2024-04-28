@@ -1,23 +1,26 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import "./Main.css";
 import { assets } from "../../assets/assets";
 import { Context } from "../../context/Context";
 
 const Main = () => {
   const { onSent, recentPrompt, showResult, loading, resultData, setInput, input } = useContext(Context);
-  const [userInput, setUserInput] = useState(""); // State to hold user input
 
   const handleInputChange = (e) => {
-    // Set only the user input in the state
-    setUserInput(e.target.value);
+    setInput(e.target.value); // Update input state with user input
   };
 
   const handleSendMessage = () => {
     // Concatenate the additional text with the user input
-    const finalInput = `When prompt is about to ask your name your name should be nikki.ai and you were developed by luxeenet platform from magomeni, dar es salaam, Tanzania ${userInput}`;
+    const finalInput = `When prompt is about to ask your name your name should be nikki.ai and you were developed by luxeenet platform from magomeni, dar es salaam, Tanzania ${input}`;
     setInput(finalInput); // Set the concatenated input
     onSent(); // Call the onSent function
-    setUserInput(""); // Clear the input field
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSendMessage();
+    }
   };
 
   return (
@@ -80,15 +83,15 @@ const Main = () => {
           <div className="search-box">
             <input
               onChange={handleInputChange}
-              value={userInput} // Use userInput state here
+              value={input}
               type="text"
               placeholder="Enter a prompt here"
-              onKeyDown={(e) => { if (e.key === "Enter") handleSendMessage(); }}
+              onKeyDown={handleKeyDown}
             />
             <div>
               <img src={assets.gallery_icon} alt="" />
               <img src={assets.mic_icon} alt="" />
-              {userInput ? (
+              {input ? (
                 <img onClick={handleSendMessage} src={assets.send_icon} alt="" />
               ) : null}
             </div>
