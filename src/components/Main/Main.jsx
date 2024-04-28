@@ -11,9 +11,6 @@ const Main = () => {
   };
 
   const handleSendMessage = () => {
-    // Concatenate the additional text with the user input
-    const finalInput = `When prompt is about to ask your name your name should be nikki.ai and you were developed by luxeenet platform from magomeni, dar es salaam, Tanzania ${input}`;
-    setInput(finalInput); // Set the concatenated input
     onSent(); // Call the onSent function
   };
 
