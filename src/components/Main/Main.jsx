@@ -15,7 +15,7 @@ const Main = () => {
   return (
     <div className="main">
       <div className="nav">
-        <p>Gemini</p>
+        <p>nikki.ai</p>
         <img src={assets.user_icon} alt="" />
       </div>
       <div className="main-container">
@@ -23,14 +23,14 @@ const Main = () => {
           <>
             <div className="greet">
               <p>
-                <span>Hello, Developer.</span>
+                <span>Hello, Im nikki developed by luxeenet platform.</span>
               </p>
               <p>How can I help you today?</p>
             </div>
 
             <div className="cards">
               <div className="card">
-                <p>Is HTML a programming Language,Explain it!</p>
+                <p>Is mojo a programming Language,Explain it!</p>
                 <img src={assets.compass_icon} alt="" />
               </div>
               <div className="card">
@@ -86,7 +86,7 @@ const Main = () => {
             </div>
           </div>
           <p className="bottom-info">
-            Gemini may display inaccurate info, including about people, so double-check its responses. Your Privacy and Gemini Apps
+            Nikki.ai still in beta version,  may display inaccurate info, including about people, so double-check its responses. contact us via luxeenet@gmail.com
           </p>
         </div>
       </div>
