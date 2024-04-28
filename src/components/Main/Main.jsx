@@ -4,31 +4,14 @@ import { assets } from "../../assets/assets";
 import { Context } from "../../context/Context";
 
 const Main = () => {
-  const {
-    onSent,
-    recentPrompt,
-    showResult,
-    loading,
-    resultData,
-    setInput,
-    input,
-  } = useContext(Context);
-
+  const { onSent, recentPrompt, showResult, loading, resultData, setInput } = useContext(Context);
   const [userInput, setUserInput] = useState("");
 
   const handleInputChange = (e) => {
     setUserInput(e.target.value);
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      setInput(userInput);
-      onSent();
-      setUserInput(""); // Clear the input field after sending the message
-    }
-  };
-
-  const handleSendClick = () => {
+  const handleSendMessage = () => {
     setInput(userInput);
     onSent();
     setUserInput(""); // Clear the input field after sending the message
@@ -67,11 +50,7 @@ const Main = () => {
                   <hr />
                 </div>
               ) : (
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: resultData,
-                  }}
-                ></p>
+                <p dangerouslySetInnerHTML={{ __html: resultData }}></p>
               )}
             </div>
           </div>
@@ -84,24 +63,18 @@ const Main = () => {
               value={userInput}
               type="text"
               placeholder="Enter a prompt here"
-              onKeyDown={handleKeyDown}
+              onKeyDown={(e) => { if (e.key === "Enter") handleSendMessage(); }}
             />
             <div>
               <img src={assets.gallery_icon} alt="" />
               <img src={assets.mic_icon} alt="" />
-              {userInput ? (
-                <img
-                  onClick={handleSendClick}
-                  src={assets.send_icon}
-                  alt=""
-                />
-              ) : null}
+              {userInput && (
+                <img onClick={handleSendMessage} src={assets.send_icon} alt="" />
+              )}
             </div>
           </div>
           <p className="bottom-info">
-            Nikki.ai still in beta version may display inaccurate info,
-            including about people, so double-check its responses. contact us
-            luxeenet@gmail.com
+            Nikki.ai still in beta version may display inaccurate info, including about people, so double-check its responses. contact us luxeenet@gmail.com
           </p>
         </div>
       </div>
