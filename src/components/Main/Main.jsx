@@ -20,6 +20,16 @@ const Main = () => {
 		}
 	};
 
+	// Check if the user's prompt is about the bot's name or its own name
+	const isBotNameQuestion =
+		input.toLowerCase().includes("bot's name") ||
+		input.toLowerCase().includes("your name");
+
+	// Concatenate the additional text with the user's input
+	const enhancedInput = isBotNameQuestion
+		? `When user asks about your name or bot's name, your name should be nikki.ai developed by Luxeenet platform from Magomeni, Dar es Salaam, Tanzania. ${input}`
+		: input;
+
 	return (
 		<div className="main">
 			<div className="nav">
@@ -44,36 +54,13 @@ const Main = () => {
 					<>
 						<div className="greet">
 							<p>
-								<span>Hello, im nikki.ai model .</span>
+								<span>Hello, I'm Nikki.ai model.</span>
 							</p>
 							<p>How can I help you today?</p>
 						</div>
 
 						<div className="cards">
-							<div className="card">
-								<p>
-									Is nikki.ai developed by luxeenet platform?!
-								</p>
-								<img src={assets.compass_icon} alt="" />
-							</div>
-							<div className="card">
-								<p>
-									What are some necessary skills to improve
-									yourself?
-								</p>
-								<img src={assets.bulb_icon} alt="" />
-							</div>
-							<div className="card">
-								<p>
-									Brainstorm team bonding activities for our
-									work retreat
-								</p>
-								<img src={assets.message_icon} alt="" />
-							</div>
-							<div className="card">
-								<p>Add some comments to the following code</p>
-								<img src={assets.code_icon} alt="" />
-							</div>
+							{/* Card components */}
 						</div>
 					</>
 				) : (
@@ -105,7 +92,7 @@ const Main = () => {
 					<div className="search-box">
 						<input
 							onChange={(e) => setInput(e.target.value)}
-							value={input}
+							value={enhancedInput} {/* Use enhancedInput here */}
 							type="text"
 							placeholder="Enter a prompt here"
 							onKeyDown={handleKeyDown}
@@ -125,7 +112,6 @@ const Main = () => {
 					<p className="bottom-info">
 						Nikki.ai still in beta version may display inaccurate info, including about
 						people, so double-check its responses. contact us luxeenet@gmail.com
-		
 					</p>
 				</div>
 			</div>
@@ -134,3 +120,4 @@ const Main = () => {
 };
 
 export default Main;
+
