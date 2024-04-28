@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import "./Main.css";
 import { assets } from "../../assets/assets";
 import { Context } from "../../context/Context";
@@ -14,9 +14,21 @@ const Main = () => {
     input,
   } = useContext(Context);
 
+  const [userInput, setUserInput] = useState("");
+
+  const handleInputChange = (e) => {
+    setUserInput(e.target.value);
+  };
+
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
+      const finalInput = input.toLowerCase().includes("bot's name") ||
+        input.toLowerCase().includes("your name")
+        ? `When user asks about your name or bot's name, your name should be nikki.ai developed by Luxeenet platform from Magomeni, Dar es Salaam, Tanzania. ${userInput}`
+        : userInput;
+      setInput(finalInput);
       onSent();
+      setUserInput(""); // Clear the input field after sending the message
     }
   };
 
@@ -66,8 +78,8 @@ const Main = () => {
         <div className="main-bottom">
           <div className="search-box">
             <input
-              onChange={(e) => setInput(`When user asks about your name or bot's name, your name should be nikki.ai developed by Luxeenet platform from Magomeni, Dar es Salaam, Tanzania. ${e.target.value}`)}
-              value={input}
+              onChange={handleInputChange}
+              value={userInput}
               type="text"
               placeholder="Enter a prompt here"
               onKeyDown={handleKeyDown}
@@ -75,9 +87,9 @@ const Main = () => {
             <div>
               <img src={assets.gallery_icon} alt="" />
               <img src={assets.mic_icon} alt="" />
-              {input ? (
+              {userInput ? (
                 <img
-                  onClick={() => onSent()}
+                  onClick={handleKeyDown}
                   src={assets.send_icon}
                   alt=""
                 />
@@ -96,5 +108,4 @@ const Main = () => {
 };
 
 export default Main;
-
 
