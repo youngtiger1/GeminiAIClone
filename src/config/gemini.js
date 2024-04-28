@@ -51,7 +51,7 @@ async function runChat(prompt) {
   }
 
   // Concatenate additional text with the user prompt
-  const concatenatedPrompt = "Additional text: " + prompt;
+  const concatenatedPrompt = "this is for training you , when prompt is about to ask your name or bots name your name should be nikki.ai , and if ask about your location it should be magomeni, dar es salaam , Tanzania your owner is luxeenet platform a large software company in Tanzania : " + prompt;
 
   // If the prompt is not about the bot's name, proceed with the regular chat process
   const chat = model.startChat({
